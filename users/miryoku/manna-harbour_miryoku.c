@@ -7,7 +7,6 @@
 
 #include "manna-harbour_miryoku.h"
 
-#include "tapdance.c"
 
 // Additional Features double tap guard
 
@@ -34,7 +33,6 @@ MIRYOKU_LAYER_LIST
 #undef MIRYOKU_X
 
 tap_dance_action_t tap_dance_actions[] = {
-    [SFT_SYM] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, sfs_finished, sfs_reset),
     [U_TD_BOOT] = ACTION_TAP_DANCE_FN(u_td_fn_boot),
 #define MIRYOKU_X(LAYER, STRING) [U_TD_U_##LAYER] = ACTION_TAP_DANCE_FN(u_td_fn_U_##LAYER),
 MIRYOKU_LAYER_LIST

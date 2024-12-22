@@ -11,9 +11,11 @@
 #define RGBLIGHT_SAT_STEP 10
 #define RGBLIGHT_VAL_STEP 6
 
-#define BILATERAL_COMBINATIONS 500
+#define BILATERAL_COMBINATIONS 750
 
 #define COMBO_ONLY_FROM_LAYER 0
+
+#define ONESHOT_TIMEOUT 1000
 
 // Custom Mapping
 
@@ -29,7 +31,7 @@ LAYOUT_split_3x6_3( \
 KC_GRV ,  K00,  K01,  K02,  K03,  K04,         K05,  K06,  K07,  K08,  K09,  KC_BSLS, \
 KC_LPRN,  K10,  K11,  K12,  K13,  K14,         K15,  K16,  K17,  K18,  K19,  KC_RPRN, \
 CW_TOGG,  K20,  K21,  K22,  K23,  K24,         K25,  K26,  K27,  K28,  K29,  LSFT(KC_ENT), \
-                      K32,  K33,  K34,         CT_SFT_SYM,  K36,  K37 \
+                      K32,  K33,  K34,         TD(SFT_SYM),  K36,  K37 \
 )
 
 #define MIRYOKU_LAYERMAPPING_NUM( \

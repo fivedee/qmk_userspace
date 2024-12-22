@@ -1,7 +1,7 @@
 #include QMK_KEYBOARD_H
 
-const uint16_t PROGMEM 26_28_ent[] = {K26, K28, COMBO_END};
+const uint16_t PROGMEM index_ring_bottom_ent[] = {KC_M, KC_DOT, COMBO_END};
 
 combo_t key_combos[] = {
-    COMBO(26_28_ent, KC_ENT),
+    COMBO(index_ring_bottom_ent, KC_ENT),
 };

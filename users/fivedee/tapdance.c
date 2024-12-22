@@ -1,59 +1,64 @@
 #include QMK_KEYBOARD_H
 
-enum {
-    CT_SFT_SYM,
+enum td_keycodes {
+    SFT_SYM,
 };
 
-typedef struct {
-    uint16_t tap;
-    uint16_t hold;
-    uint16_t held;
-} tap_dance_tap_hold_t;
+typedef enum {
+    TD_NONE,
+    TD_UNKNOWN,
+    TD_SINGLE_TAP,
+    TD_SINGLE_HOLD,
+    TD_DOUBLE_SINGLE_TAP,
+} td_state_t;
 
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    tap_dance_action_t *action;
+static td_state_t td_state;
 
-    switch (keycode) {
-        case TD(CT_SFT_SYM):  // list all tap dance keycodes with tap-hold configurations
-            action = &tap_dance_actions[QK_TAP_DANCE_GET_INDEX(keycode)];
-            if (!record->event.pressed && action->state.count && !action->state.finished) {
-                tap_dance_tap_hold_t *tap_hold = (tap_dance_tap_hold_t *)action->user_data;
-                tap_code16(tap_hold->tap);
-            }
+td_state_t cur_dance(tap_dance_state_t *state);
+
+void sfs_finished(tap_dance_state_t *state, void *user_data);
+void sfs_reset(tap_dance_state_t *state, void *user_data);
+
+// Determine the tapdance state to return
+td_state_t cur_dance(tap_dance_state_t *state) {
+    if (state->count == 1) {
+        if (state->interrupted || !state->pressed) return TD_SINGLE_TAP;
+        else return TD_SINGLE_HOLD;
     }
-    return true;
+
+    if (state->count == 2) return TD_DOUBLE_SINGLE_TAP;
+    else return TD_UNKNOWN; // Any number higher than the maximum state value you return above
 }
 
-void tap_dance_tap_hold_finished(tap_dance_state_t *state, void *user_data) {
-    tap_dance_tap_hold_t *tap_hold = (tap_dance_tap_hold_t *)user_data;
-
-    if (state->pressed) {
-        if (state->count == 1
-#ifndef PERMISSIVE_HOLD
-            && !state->interrupted
-#endif
-        ) {
-            register_code16(tap_hold->hold);
-            tap_hold->held = tap_hold->hold;
-        } else {
-            register_code16(tap_hold->tap);
-            tap_hold->held = tap_hold->tap;
-        }
-    }
-}
-
-void tap_dance_tap_hold_reset(tap_dance_state_t *state, void *user_data) {
-    tap_dance_tap_hold_t *tap_hold = (tap_dance_tap_hold_t *)user_data;
-
-    if (tap_hold->held) {
-        unregister_code16(tap_hold->held);
-        tap_hold->held = 0;
+void sfs_finished(tap_dance_state_t *state, void *user_data) {
+    td_state = cur_dance(state);
+    switch (td_state) {
+        case TD_SINGLE_TAP:
+            add_oneshot_mods(MOD_BIT(KC_LSFT));
+            break;
+        case TD_SINGLE_HOLD:
+            layer_on(U_SYM);
+            break;
+        case TD_DOUBLE_SINGLE_TAP:
+            caps_word_toggle();
+            break;
+        default:
+            break;
     }
 }
 
-#define ACTION_TAP_DANCE_TAP_HOLD(tap, hold) \
-    { .fn = {NULL, tap_dance_tap_hold_finished, tap_dance_tap_hold_reset}, .user_data = (void *)&((tap_dance_tap_hold_t){tap, hold, 0}), }
-
-tap_dance_action_t tap_dance_actions[] = {
-    [CT_SFT_SYM] = ACTION_TAP_DANCE_TAP_HOLD(OSM(MOD_LSFT), MO(SYM)),
-};
+void sfs_reset(tap_dance_state_t *state, void *user_data) {
+    switch (td_state) {
+        case TD_SINGLE_TAP:
+            // Crickets...
+            break;
+        case TD_SINGLE_HOLD:
+            layer_off(U_SYM);
+            break;
+        case TD_DOUBLE_SINGLE_TAP:
+            // Crickets...
+            break;
+        default:
+            break;
+    }
+}
