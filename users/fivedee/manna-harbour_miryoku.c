@@ -34,8 +34,8 @@ MIRYOKU_LAYER_LIST
 #undef MIRYOKU_X
 
 tap_dance_action_t tap_dance_actions[] = {
-    [SFT_SYM] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, sfs_finished, sfs_reset),
     [U_TD_BOOT] = ACTION_TAP_DANCE_FN(u_td_fn_boot),
+    [SFT_SYM] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, sfs_td, sfs_rst),
 #define MIRYOKU_X(LAYER, STRING) [U_TD_U_##LAYER] = ACTION_TAP_DANCE_FN(u_td_fn_U_##LAYER),
 MIRYOKU_LAYER_LIST
 #undef MIRYOKU_X
@@ -63,7 +63,8 @@ const key_override_t *key_overrides[] = {
 // thumb combos
 
 #if defined (MIRYOKU_KLUDGE_THUMBCOMBOS)
-const uint16_t PROGMEM thumbcombos_base_right[] = {LT(U_SYM, KC_ENT), LT(U_NUM, KC_BSPC), COMBO_END};
+const uint16_t PROGMEM index_ring_bottom_ent[] = {KC_M, ALGR_T(KC_DOT), COMBO_END};
+const uint16_t PROGMEM thumbcombos_base_right[] = {TD(SFT_SYM), LT(U_NUM, KC_BSPC), COMBO_END};
 const uint16_t PROGMEM thumbcombos_base_left[] = {LT(U_NAV, KC_SPC), LT(U_MOUSE, KC_TAB), COMBO_END};
 const uint16_t PROGMEM thumbcombos_nav[] = {KC_ENT, KC_BSPC, COMBO_END};
 const uint16_t PROGMEM thumbcombos_mouse[] = {KC_BTN2, KC_BTN1, COMBO_END};
@@ -76,6 +77,7 @@ const uint16_t PROGMEM thumbcombos_sym[] = {KC_RPRN, KC_UNDS, COMBO_END};
   #endif
 const uint16_t PROGMEM thumbcombos_fun[] = {KC_SPC, KC_TAB, COMBO_END};
 combo_t key_combos[] = {
+  COMBO(index_ring_bottom_ent, KC_ENT),
   COMBO(thumbcombos_base_right, LT(U_FUN, KC_DEL)),
   COMBO(thumbcombos_base_left, LT(U_MEDIA, KC_ESC)),
   COMBO(thumbcombos_nav, KC_DEL),
@@ -87,6 +89,6 @@ combo_t key_combos[] = {
   #else
   COMBO(thumbcombos_sym, KC_LPRN),
   #endif
-  COMBO(thumbcombos_fun, KC_APP)
+  COMBO(thumbcombos_fun, KC_APP),
 };
 #endif
