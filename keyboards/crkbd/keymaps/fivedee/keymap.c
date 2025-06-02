@@ -17,10 +17,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #include QMK_KEYBOARD_H
-#include "custom_keycodes.h"
-#include "layers.h"
-#include "combos.h"
-#include "features/num_word.h"
+#include "fivedee.h"
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {

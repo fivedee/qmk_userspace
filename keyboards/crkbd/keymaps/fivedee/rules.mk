@@ -13,4 +13,4 @@ TAP_DANCE_ENABLE = no
 SPACE_CADET_ENABLE = no
 GRAVE_ESC_ENABLE = no 
 MAGIC_ENABLE = no
-SRC += features/num_word.c
+USER_NUM_WORD_ENABLE = yes

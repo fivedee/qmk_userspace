@@ -1,5 +1,8 @@
 #pragma once
 
+#include "layers.h"
+#include "custom_keycodes.h"
+
 enum combos {
     cmb_AT,
     cmb_HSH,
