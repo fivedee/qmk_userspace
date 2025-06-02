@@ -3,12 +3,6 @@
 
 uint8_t mod_state;
 
-
-__attribute__ ((weak))
-bool process_record_user_kb(uint16_t keycode, keyrecord_t *record) {
-    return true;
-}
-
 // Runs for each key down or up event.
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     // Returning true here will cause QMK to continue handling the key normally.
@@ -28,10 +22,25 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     // Custom keycode / function handling, based on the core function
     // process_record_quantum
     // https://github.com/qmk/qmk_firmware/blob/master/quantum/quantum.c
+    return true;
     if (!(
-    process_record_num_word(keycode, record) &&
+    #ifdef USER_NUM_WORD_ENABLE
+        process_record_num_word(keycode, record) &&
+    #endif
+    #ifdef USER_PANIC_ENABLE
+        process_record_panic(keycode, record) &&
+#endif
     true)) {
         return false;
     }
-    return process_record_user_kb(keycode, record);
+    switch (keycode) {
+         case PANIC:
+            if (record->event.pressed) {
+                clear_oneshot_mods();
+                reset_oneshot_layer();
+                layer_clear();
+            } else {
+           }
+            break;
+        }
 }
