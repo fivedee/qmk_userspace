@@ -19,20 +19,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include QMK_KEYBOARD_H
 #include "fivedee.h"
 
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-    case PANIC:
-        if (record->event.pressed) {
-            clear_oneshot_mods();
-            reset_oneshot_layer();
-            layer_clear();
-        } else {
-        }
-        break;
-    }
-    return true;
-};
-
 const key_override_t lprn_override = ko_make_basic(MOD_MASK_SHIFT, KC_LPRN, KC_LT);
 const key_override_t rprn_override = ko_make_basic(MOD_MASK_SHIFT, KC_RPRN, KC_GT);
 const key_override_t comm_override = ko_make_basic(MOD_MASK_SHIFT, KC_COMM, KC_SCLN);
