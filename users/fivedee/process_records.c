@@ -3,6 +3,11 @@
 
 uint8_t mod_state;
 
+__attribute__ ((weak))
+bool process_record_user_kb(uint16_t keycode, keyrecord_t *record) {
+    return true;
+}
+
 // Runs for each key down or up event.
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return true;
@@ -26,4 +31,5 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
            }
             break;
         }
+    return process_record_user_kb(keycode, record);
 }
