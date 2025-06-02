@@ -17,8 +17,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #include QMK_KEYBOARD_H
-#include "layers.h"
 #include "custom_keycodes.h"
+#include "layers.h"
 #include "combos.h"
 #include "features/num_word.h"
 
@@ -60,7 +60,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       CW_TOGG,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_QUES,  KC_ENT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          MO(_MDA),   LT(_NAV, KC_SPC),  QK_REP,     OSM(MOD_LSFT),   NUMWORD, MO(_ADB)
+                                          MO(_MDA),   LT(_NAV, KC_SPC),  QK_REP,     NUMWORD, OSM(MOD_LSFT), MO(_ADB)
                                       //`--------------------------'  `--------------------------'
   ),
 
@@ -132,7 +132,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       CW_TOGG,    KC_Z,    KC_K,    KC_Q,    KC_G,    KC_W,                         KC_B,    KC_H, KC_QUOT,  KC_SCLN, KC_COMM,  KC_ENT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          MO(_MDA),   LT(_NAV, KC_SPC),  KC_BSPC,     OSM(MOD_LSFT),   NUMWORD, MO(_ADB)
+                                          MO(_MDA),   LT(_NAV, KC_SPC),  KC_BSPC,        NUMWORD, OSM(MOD_LSFT), MO(_ADB)
                                       //`--------------------------'  `--------------------------'
   )
 };

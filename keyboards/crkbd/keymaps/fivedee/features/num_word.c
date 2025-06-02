@@ -14,7 +14,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "num_word.h"
+#include "features/num_word.h"
 
 static uint16_t num_word_timer = 0;
 static bool is_num_word_on = false;
