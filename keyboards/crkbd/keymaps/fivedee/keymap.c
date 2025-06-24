@@ -18,14 +18,23 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include QMK_KEYBOARD_H
 #include "fivedee.h"
+#include "rep_defs.h"
 
-const key_override_t lprn_override = ko_make_basic(MOD_MASK_SHIFT, KC_LPRN, KC_LT);
-const key_override_t rprn_override = ko_make_basic(MOD_MASK_SHIFT, KC_RPRN, KC_GT);
-const key_override_t comm_override = ko_make_basic(MOD_MASK_SHIFT, KC_COMM, KC_SCLN);
-const key_override_t dot_override = ko_make_basic(MOD_MASK_SHIFT, KC_DOT, KC_COLN);
-const key_override_t ques_override = ko_make_basic(MOD_MASK_SHIFT, KC_QUES, KC_EXLM);
+const key_override_t lprn_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_LPRN, KC_LT, (1<<_QWRT | 1<<_STDY));
+const key_override_t rprn_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_RPRN, KC_GT, (1<<_QWRT | 1<<_STDY));
+const key_override_t comm_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_COMM, KC_SCLN, (1<<_QWRT | 1<<_STDY));
+const key_override_t dot_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_DOT, KC_COLN, (1<<_QWRT | 1<<_STDY));
+const key_override_t ques_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_QUES, KC_EXLM, (1<<_QWRT | 1<<_STDY));
+const key_override_t numdot_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_DOT, KC_COMM, 1<<_NUM);
 
 
+bool rgb_matrix_indicators_user(void) {
+    rgb_matrix_set_color(44, 0, 191, 111);
+    rgb_matrix_set_color(38, 234, 58, 120);
+    rgb_matrix_set_color(43, 72, 101, 214);
+    rgb_matrix_set_color(46, 244, 48, 62);
+    return true;
+}
 enum combos {
     cmb_AT,
     cmb_HSH,
@@ -72,12 +81,12 @@ const uint16_t PROGMEM combo_AND[] ={KC_U, RSFT_T(KC_J), COMBO_END};
 const uint16_t PROGMEM combo_STR[] ={KC_I, RCTL_T(KC_K), COMBO_END};
 const uint16_t PROGMEM combo_SLS[] ={KC_O, RALT_T(KC_L), COMBO_END};
 const uint16_t PROGMEM combo_GRV[] ={LALT_T(KC_S), KC_X, COMBO_END};
-const uint16_t PROGMEM combo_BSL[] ={LCTL_T(KC_D), KC_C, COMBO_END};
+const uint16_t PROGMEM combo_BSL[] ={KC_G, KC_B, COMBO_END};
 const uint16_t PROGMEM combo_MNS[] ={LSFT_T(KC_F), KC_V, COMBO_END};
-const uint16_t PROGMEM combo_EQL[] ={KC_G, KC_B, COMBO_END};
-const uint16_t PROGMEM combo_USC[] ={KC_H, KC_N, COMBO_END};
+const uint16_t PROGMEM combo_EQL[] ={RCTL_T(KC_K), KC_COMM, COMBO_END};
+const uint16_t PROGMEM combo_USC[] ={LCTL_T(KC_D), KC_C, COMBO_END};
 const uint16_t PROGMEM combo_PLS[] ={RSFT_T(KC_J), KC_M, COMBO_END};
-const uint16_t PROGMEM combo_PIP[] ={RCTL_T(KC_K), KC_COMM, COMBO_END};
+const uint16_t PROGMEM combo_PIP[] ={KC_H, KC_N, COMBO_END};
 const uint16_t PROGMEM combo_TIL[] ={RALT_T(KC_L), KC_DOT, COMBO_END};
 const uint16_t PROGMEM combo_LDR[] ={LCTL_T(KC_D), LSFT_T(KC_F), COMBO_END};
 const uint16_t PROGMEM combo_CWD[] ={LSFT_T(KC_F), RSFT_T(KC_J), COMBO_END};
@@ -92,7 +101,7 @@ const uint16_t PROGMEM combo_MDA[] ={LT(_NAV, KC_SPC), KC_BSPC, COMBO_END};
 const uint16_t PROGMEM combo_FUN[] ={KC_BSPC, OSM(MOD_LSFT), COMBO_END};
 const uint16_t PROGMEM combo_ADB[] ={OSM(MOD_LSFT), NUMWORD, COMBO_END};
 const uint16_t PROGMEM combo_ENT[] ={KC_M, KC_DOT, COMBO_END};
-const uint16_t PROGMEM combo_LBR[] ={KC_M, KC_N, COMBO_END};
+const uint16_t PROGMEM combo_LBR[] ={KC_M, KC_COMM, COMBO_END};
 const uint16_t PROGMEM combo_LPR[] ={RSFT_T(KC_J), RCTL_T(KC_K), COMBO_END};
 const uint16_t PROGMEM combo_RBR[] ={KC_DOT, KC_COMM, COMBO_END};
 const uint16_t PROGMEM combo_RPR[] ={RCTL_T(KC_K), RALT_T(KC_L), COMBO_END};
@@ -126,7 +135,7 @@ combo_t key_combos[] = {
     [cmb_CUT] = COMBO(combo_CUT, C(KC_X)),
     [cmb_MDA] = COMBO(combo_MDA, OSL(_MDA)),
     [cmb_FUN] = COMBO(combo_FUN, OSL(_FUN)),
-    [cmb_ADB] = COMBO(combo_ADB, OSL(_ADB)),
+//     [cmb_ADB] = COMBO(combo_ADB, OSL(_ADB)),
     [cmb_ENT] = COMBO(combo_ENT, KC_ENT),
     [cmb_LPR] = COMBO(combo_LPR, KC_LPRN),
     [cmb_LBR] = COMBO(combo_LBR, KC_LBRC),
@@ -142,7 +151,20 @@ const key_override_t *key_overrides[] = {
     &comm_override,
     &dot_override,
     &ques_override,
+    &numdot_override,
 };
+
+bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case LSFT_T(KC_F):
+        case RSFT_T(KC_J):
+            // Immediately select the hold action when another key is tapped.
+            return true;
+        default:
+            // Do not select the hold action when another key is tapped.
+            return false;
+    }
+}
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_QWRT] = LAYOUT_split_3x6_3(
@@ -153,7 +175,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       CW_TOGG,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_QUES,  KC_ENT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          MO(_MDA),   LT(_NAV, KC_SPC),  QK_REP,     NUMWORD, OSM(MOD_LSFT), MO(_ADB)
+                                          MO(_MDA),   LT(_NAV, KC_SPC),  KC_TAB,     QK_REP, NUMWORD, KC_ESC
                                       //`--------------------------'  `--------------------------'
   ),
 
@@ -177,7 +199,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_TRNS, KC_TRNS, KC_1,   KC_2,    KC_3,    KC_TRNS,                      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_TRNS, KC_0,  KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS
+                                          KC_TRNS, KC_0,  KC_DOT,     KC_TRNS, KC_TRNS, KC_TRNS
                                       //`--------------------------'  `--------------------------'
   ),
 
@@ -193,7 +215,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                       //`--------------------------'  `--------------------------'
   ),
 
-    [_ADB] = LAYOUT_split_3x6_3(
+/* Removed until I can get the firmware size down    [_ADB] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
@@ -204,7 +226,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                           KC_TRNS, KC_TRNS,  KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS
                                       //`--------------------------'  `--------------------------'
   ),
-
+*/
     [_FUN] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
       KC_F12, KC_F7,   KC_F8,    KC_F9,    KC_TRNS, KC_TRNS,                      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
@@ -219,13 +241,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_STDY] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       DF(_QWRT),    KC_V,    KC_M,    KC_L,    KC_C,    KC_P,                         KC_Q,    KC_F,    KC_O,    KC_U,   KC_J,  KC_BSLS,
+       DF(_QWRT),    KC_V,    KC_M,    KC_L,    KC_C,    KC_P,                         KC_B,    QK_AREP,    KC_U,    KC_O,   KC_Q,  KC_BSLS,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LPRN,KC_S,KC_T,KC_R,KC_D, KC_Y,           KC_DOT,KC_N,KC_A,KC_E,KC_I, KC_RPRN,
+      KC_LPRN,KC_S,KC_T,KC_R,LSFT_T(KC_D), KC_Y,                                KC_F,RSFT_T(KC_N),KC_E,KC_A,KC_I, KC_RPRN,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      CW_TOGG,    KC_Z,    KC_K,    KC_Q,    KC_G,    KC_W,                         KC_B,    KC_H, KC_QUOT,  KC_SCLN, KC_COMM,  KC_ENT,
+      CW_TOGG,    KC_X,    KC_K,    KC_J,    KC_G,    KC_W,                         KC_Z,    KC_H, KC_QUOT,  KC_QUES, KC_DOT,  KC_ENT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          MO(_MDA),   LT(_NAV, KC_SPC),  KC_BSPC,        NUMWORD, OSM(MOD_LSFT), MO(_ADB)
+                                          MO(_MDA),   LT(_NAV, KC_SPC),  KC_TAB,     QK_REP, MO(1), KC_ESC
                                       //`--------------------------'  `--------------------------'
   )
 };

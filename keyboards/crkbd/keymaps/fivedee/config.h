@@ -24,10 +24,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define FORCE_NKRO
 
-#define TAPPING_TERM 200
+#define TAPPING_TERM 160
 #define CHORDAL_HOLD
-#define FLOW_TAP_TERM 150
+#define FLOW_TAP_TERM 120
 #define DOUBLE_TAP_SHIFT_TURNS_ON_CAPS_WORD
+#define PERMISSIVE_HOLD_PER_KEY
 
 #define COMBO_ONLY_FROM_LAYER 0
 
@@ -35,7 +36,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGBLIGHT_SAT_STEP 5
 #define RGBLIGHT_VAL_STEP 5
 #define RGBLIGHT_SLEEP
-#define RGBLIGHT_SPLIT
+#define SPLIT_LAYER_STATE_ENABLE
 
 #undef LOCKING_SUPPORT_ENABLE
 #undef LOCKING_RESYNC_ENABLE
+
+#define LAYER_STATE_8BIT

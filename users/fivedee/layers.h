@@ -5,7 +5,7 @@ enum layers {
     _NAV,
     _NUM,
     _MDA,
-    _ADB,
+//    _ADB, Removed until I can get the firmware size down
     _FUN,
     _STDY
 };
