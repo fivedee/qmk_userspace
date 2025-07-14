@@ -31,3 +31,10 @@
 #define RGBLIGHT_VAL_STEP 5
 #define RGBLIGHT_SLEEP
 #define SPLIT_LAYER_STATE_ENABLE
+
+// Points to a custom font file
+#define OLED_FONT_H "noellefont.c"
+
+#define EE_HANDS
+
+#define ENCODER_RESOLUTION 2
