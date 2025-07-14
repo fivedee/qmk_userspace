@@ -1,6 +1,8 @@
 {
     "userspace_version": "1.1",
     "build_targets": [
-        ["crkbd", "fivedee"]
+        ["crkbd", "fivedee"],
+        ["splitkb/kyria/rev3", "fivedee"],
+        ["splitkb/kyria/rev2/base", "fivedee"]
     ]
 }
