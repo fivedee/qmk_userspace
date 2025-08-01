@@ -9,7 +9,9 @@ bool process_record_user_kb(uint16_t keycode, keyrecord_t *record) {
 // Runs for each key down or up event.
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (!(
+    #ifdef USER_NUM_WORD_ENABLE
         process_record_num_word(keycode, record) &&
+    #endif
     true)) {
         return false;
     }

@@ -19,7 +19,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include QMK_KEYBOARD_H
 #include "custom_keycodes.h"
 #include "layers.h"
+#ifdef USER_NUM_WORD_ENABLE
 #include "features/num_word.h"
+#endif
 #include "rep_defs.h"
 #include "rgb.h"
 #include "key_overrides.h"
@@ -33,9 +35,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LPRN,LGUI_T(KC_A),LALT_T(KC_S),LCTL_T(KC_D),LSFT_T(KC_F), KC_G,           KC_H,RSFT_T(KC_J),RCTL_T(KC_K),RALT_T(KC_L),RGUI_T(KC_QUOT), KC_RPRN,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      CW_TOGG,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_QUES,  KC_ENT,
+      CW_TOGG,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_QUES,  LSFT(KC_ENT),
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          MO(_MDA),   LT(_NAV, KC_SPC),  KC_TAB,     QK_REP, NUMWORD, KC_ESC
+                                          LT(_MDA, KC_ESC),   LT(_NAV, KC_SPC),  KC_TAB,     KC_ENT, LT(_NUM, KC_BSPC), KC_DEL
                                       //`--------------------------'  `--------------------------'
   ),
 
