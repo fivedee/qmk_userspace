@@ -6,6 +6,8 @@ bool get_permissive_hold(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case LSFT_T(KC_F):
         case RSFT_T(KC_J):
+        case LSFT_T(KC_D):
+        case RSFT_T(KC_N):
             // Immediately select the hold action when another key is tapped.
             return true;
         default:
@@ -22,7 +24,7 @@ uint16_t get_flow_tap_term(uint16_t keycode, keyrecord_t* record,
             case RSFT_T(KC_J):
             case LSFT_T(KC_D):
             case RSFT_T(KC_N):
-                return FLOW_TAP_TERM - 40; // Reduce flow tap on shift keys by 40ms.
+                return FLOW_TAP_TERM - 50; // Reduce flow tap on shift keys by 50ms.
             
             default:
                 return FLOW_TAP_TERM;

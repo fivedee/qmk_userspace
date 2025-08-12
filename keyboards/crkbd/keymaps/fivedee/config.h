@@ -24,11 +24,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define FORCE_NKRO
 
-#define TAPPING_TERM 240
+#define TAPPING_TERM 175
 #define CHORDAL_HOLD
-#define FLOW_TAP_TERM 120
-#define DOUBLE_TAP_SHIFT_TURNS_ON_CAPS_WORD
-#define PERMISSIVE_HOLD
+#define FLOW_TAP_TERM 125
 #define PERMISSIVE_HOLD_PER_KEY
 
 #define COMBO_ONLY_FROM_LAYER 0
