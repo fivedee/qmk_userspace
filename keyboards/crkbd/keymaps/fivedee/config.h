@@ -24,6 +24,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define FORCE_NKRO
 
+#define EE_HANDS
+
 #define TAPPING_TERM 175
 #define CHORDAL_HOLD
 #define FLOW_TAP_TERM 125
