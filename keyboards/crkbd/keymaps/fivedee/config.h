@@ -26,10 +26,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define EE_HANDS
 
-#define TAPPING_TERM 175
+#define TAPPING_TERM 280
+#define QUICK_TAP_TERM 175
+#define FLOW_TAP_TERM 150
+#define PERMISSIVE_HOLD
 #define CHORDAL_HOLD
-#define FLOW_TAP_TERM 125
-#define PERMISSIVE_HOLD_PER_KEY
 
 #define COMBO_ONLY_FROM_LAYER 0
 
