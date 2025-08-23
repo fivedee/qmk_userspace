@@ -33,7 +33,7 @@ enum combos {
     cmb_MDA,
     cmb_FUN,
 //    cmb_ADB,
-    cmb_ENT,
+//    cmb_ENT,
     cmb_LPR,
     cmb_LBR,
     cmb_RPR,
@@ -67,10 +67,10 @@ const uint16_t PROGMEM combo_PNK[] ={LCTL_T(KC_D), RCTL_T(KC_K), COMBO_END};
 const uint16_t PROGMEM combo_CPY[] ={KC_X, KC_C, COMBO_END};
 const uint16_t PROGMEM combo_PST[] ={KC_C, KC_V, COMBO_END};
 const uint16_t PROGMEM combo_CUT[] ={KC_X, KC_V, COMBO_END};
-const uint16_t PROGMEM combo_MDA[] ={LT(_NAV, KC_SPC), KC_TAB, COMBO_END};
-const uint16_t PROGMEM combo_FUN[] ={LT(_NUM, KC_BSPC), KC_ENT, COMBO_END};
-// const uint16_t PROGMEM combo_ADB[] ={KC_TAB, KC_ENT, COMBO_END};
-const uint16_t PROGMEM combo_ENT[] ={KC_M, KC_DOT, COMBO_END};
+const uint16_t PROGMEM combo_MDA[] ={LT(_NAV, KC_SPC), KC_ENT, COMBO_END};
+const uint16_t PROGMEM combo_FUN[] ={OSM(MOD_LSFT), MO(_NUM), COMBO_END};
+// const uint16_t PROGMEM combo_ADB[] ={KC_ENT, MO(_NUM), COMBO_END};
+// const uint16_t PROGMEM combo_ENT[] ={KC_M, KC_DOT, COMBO_END};
 const uint16_t PROGMEM combo_LBR[] ={KC_M, KC_COMM, COMBO_END};
 const uint16_t PROGMEM combo_LPR[] ={RSFT_T(KC_J), RCTL_T(KC_K), COMBO_END};
 const uint16_t PROGMEM combo_RBR[] ={KC_DOT, KC_COMM, COMBO_END};
@@ -107,7 +107,7 @@ combo_t key_combos[] = {
     [cmb_MDA] = COMBO(combo_MDA, OSL(_MDA)),
     [cmb_FUN] = COMBO(combo_FUN, OSL(_FUN)),
 //     [cmb_ADB] = COMBO(combo_ADB, OSL(_ADB)),
-    [cmb_ENT] = COMBO(combo_ENT, KC_ENT),
+//    [cmb_ENT] = COMBO(combo_ENT, KC_ENT),
     [cmb_LPR] = COMBO(combo_LPR, KC_LPRN),
     [cmb_LBR] = COMBO(combo_LBR, KC_LBRC),
     [cmb_RPR] = COMBO(combo_RPR, KC_RPRN),
