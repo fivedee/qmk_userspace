@@ -37,7 +37,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       CW_TOGG,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_QUES,  LSFT(KC_ENT),
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          LT(_MDA, KC_ESC),   LT(_NAV, KC_SPC),  HYPR_T(KC_ENT),     MO(_NUM), OSM(MOD_LSFT), LT(_FUN, KC_DEL)
+                                          LT(_MDA, KC_ESC),   LT(_NAV, KC_SPC),  MEH_T(KC_ENT),     MO(_NUM), OSM(MOD_LSFT), LT(_FUN, KC_DEL)
                                       //`--------------------------'  `--------------------------'
   ),
 
@@ -109,7 +109,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       CW_TOGG,    KC_X,    KC_K,    KC_J,    KC_G,    KC_W,                         KC_Z,    KC_H, KC_QUOT,  KC_QUES, KC_DOT,  KC_ENT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          LT(_MDA, KC_ESC),   LT(_NAV, KC_SPC),  HYPR_T(KC_ENT),     MO(_NUM), OSM(MOD_LSFT), LT(_FUN, KC_DEL)
+                                          LT(_MDA, KC_ESC),   LT(_NAV, KC_SPC),  MEH_T(KC_ENT),     MO(_NUM), OSM(MOD_LSFT), LT(_FUN, KC_DEL)
                                       //`--------------------------'  `--------------------------'
   )
 };
