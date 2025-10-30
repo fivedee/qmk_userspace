@@ -1,5 +1,5 @@
 #include QMK_KEYBOARD_H
-#include "process_records.h"
+#include "custom_keycodes.h"
 
 __attribute__ ((weak))
 bool process_record_user_kb(uint16_t keycode, keyrecord_t *record) {
@@ -25,6 +25,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             } else {
            }
             break;
+        // Magic Sturdy
          case AR_BEFORE: SEND_STRING(/*b*/"efore"); break;
          case AR_ION: SEND_STRING(/*i*/"on"); break;
          case AR_JUST: SEND_STRING(/*j*/"ust"); break;

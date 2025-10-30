@@ -22,20 +22,20 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #ifdef USER_NUM_WORD_ENABLE
 #include "features/num_word.h"
 #endif
-#include "rep_defs.h"
+// #include "rep_defs.h" // for Magic Sturdy
 #include "rgb.h"
-#include "key_overrides.h"
 #include "combos.h"
-// #include "tap_hold.h"
+#include "leader.h"
+#include "tap_hold.h"
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_QWRT] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       DF(_STDY),    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,  KC_BSLS,
+       DF(_GAL),    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,  KC_BSLS,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LPRN,LGUI_T(KC_A),LALT_T(KC_S),LCTL_T(KC_D),LSFT_T(KC_F), KC_G,           KC_H,RSFT_T(KC_J),RCTL_T(KC_K),RALT_T(KC_L),RGUI_T(KC_QUOT), KC_RPRN,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      CW_TOGG,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_QUES,  LSFT(KC_ENT),
+      CW_TOGG,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_BSLS,  LSFT(KC_ENT),
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           LT(_MDA, KC_ESC),   LT(_NAV, KC_SPC),  MEH_T(KC_ENT),     MO(_NUM), OSM(MOD_LSFT), LT(_FUN, KC_DEL)
                                       //`--------------------------'  `--------------------------'
@@ -101,13 +101,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                       //`--------------------------'  `--------------------------'
   ),
 
-    [_STDY] = LAYOUT_split_3x6_3(
+    [_GAL] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       DF(_QWRT),    KC_V,    KC_M,    KC_L,    KC_C,    KC_P,                         KC_B,    QK_AREP,    KC_U,    KC_O,   KC_Q,  KC_BSLS,
+       DF(_QWRT),    KC_B,    KC_L,    KC_D,    KC_C,    KC_V,                         KC_J,    KC_Y,    KC_O,    KC_U,   KC_COMM,  KC_BSLS,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_LPRN,KC_S,KC_T,KC_R,LSFT_T(KC_D), KC_Y,                                KC_F,RSFT_T(KC_N),KC_E,KC_A,KC_I, KC_RPRN,
+      KC_LPRN,KC_N,KC_R,KC_T,LSFT_T(KC_S), KC_G,                                KC_P,RSFT_T(KC_H),KC_A,KC_E,KC_I, KC_RPRN,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      CW_TOGG,    KC_X,    KC_K,    KC_J,    KC_G,    KC_W,                         KC_Z,    KC_H, KC_QUOT,  KC_QUES, KC_DOT,  KC_ENT,
+      CW_TOGG,    KC_X,    KC_Q,    KC_M,    KC_W,    KC_Z,                         KC_K,    KC_F, KC_QUOT,  KC_SCLN, KC_DOT,  KC_ENT,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           LT(_MDA, KC_ESC),   LT(_NAV, KC_SPC),  MEH_T(KC_ENT),     MO(_NUM), OSM(MOD_LSFT), LT(_FUN, KC_DEL)
                                       //`--------------------------'  `--------------------------'

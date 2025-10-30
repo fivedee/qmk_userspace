@@ -4,6 +4,7 @@
 *~
 .DS_Store
 ._*
+*Zone.Identifier
 
 # Firmware files
 *.hex
@@ -14,3 +15,6 @@
 compile_commands.json
 .clangd/
 .cache/
+
+# Secrets
+users/fivedee/leader-secret.h
