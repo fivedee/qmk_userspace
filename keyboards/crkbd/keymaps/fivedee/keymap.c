@@ -43,11 +43,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     [_NAV] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-      KC_TRNS, A(KC_F4), KC_TRNS, LSA(KC_TAB), A(KC_TAB), KC_TRNS,              KC_TRNS, C(KC_LEFT), KC_DEL, KC_INS, C(KC_RIGHT), KC_TRNS,
+      KC_TRNS, KC_TRNS, C(KC_RIGHT), KC_END, C(KC_H), KC_TRNS,              C(KC_C), C(Z), KC_TRNS, S(KC_ENT), C(KC_RIGHT), C(KC_V),
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_TRNS, OSM(MOD_LGUI), OSM(MOD_LALT), OSM(MOD_LCTL),OSM(MOD_LSFT), KC_TRNS, C(KC_Z), KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT, KC_TRNS,
+      KC_TRNS, KC_TRNS, KC_TRNS, ,C(KC_X), KC_TRNS, KC_HOME,                   G(KC_SPC), KC_LEFT, KC_DOWN, KC_UP, KC_RIGHT, KC_TRNS,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                      C(KC_Y), KC_HOME , KC_PGDN, KC_PGUP, KC_END, KC_TRNS,
+      KC_TRNS, C(KC_L), KC_TRNS, KC_TRNS, KC_TRNS, C(KC_LEFT),                  KC_TRNS,  KC_TRNS, KC_PGDN, KC_TRNS, KC_TRNS, C(KC_F),
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           KC_TRNS, KC_TRNS,  KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS
                                       //`--------------------------'  `--------------------------'
