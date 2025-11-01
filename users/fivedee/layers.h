@@ -7,5 +7,5 @@ enum layers {
     _MDA,
 //    _ADB, Removed until I can get the firmware size down
     _FUN,
-    _GAL
+    _GRA
 };

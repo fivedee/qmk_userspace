@@ -39,7 +39,7 @@ enum combos {
     cmb_RPR,
     cmb_RBR,
     cmb_TAB,
-    cmb_CLK
+    cmb_CLK,
     cmb_SCL
 };
 
@@ -78,7 +78,7 @@ const uint16_t PROGMEM combo_RBR[] ={KC_DOT, KC_COMM, COMBO_END};
 const uint16_t PROGMEM combo_RPR[] ={RCTL_T(KC_K), RALT_T(KC_L), COMBO_END};
 const uint16_t PROGMEM combo_TAB[] ={LALT_T(KC_S), LCTL_T(KC_D), COMBO_END};
 const uint16_t PROGMEM combo_CLK[] ={LALT_T(KC_S), RALT_T(KC_L), COMBO_END};
-const uint16_t PROGMEM combo_SCL[] ={LALT_T(KC_L), RALT_T(KC_QUOT), COMBO_END};
+const uint16_t PROGMEM combo_SCL[] ={RALT_T(KC_L), RGUI_T(KC_QUOT), COMBO_END};
 
 combo_t key_combos[] = {
     [cmb_AT] = COMBO(combo_AT, KC_AT),
