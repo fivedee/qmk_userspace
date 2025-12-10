@@ -30,18 +30,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "key_overrides.h"
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    [_QWRT] = LAYOUT_split_3x6_3(
+    [_NITE] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-       DF(_GRA),    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,  KC_BSLS,
+       KC_GRV,    KC_DOT,    KC_U,    KC_O,    KC_G,    KC_P,                         KC_Q,    KC_K,    KC_L,    KC_F,   KC_B,  KC_BSLS,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      KC_ESC,LGUI_T(KC_A),LALT_T(KC_S),LCTL_T(KC_D),LSFT_T(KC_F), KC_G,           KC_H,RSFT_T(KC_J),RCTL_T(KC_K),RALT_T(KC_L),RGUI_T(KC_QUOT), KC_SCLN,
+      KC_ESC,LGUI_T(KC_I),LALT_T(KC_E),LCTL_T(KC_A),LSFT_T(KC_C), KC_Y,           KC_M,RSFT_T(KC_T),RCTL_T(KC_H),RALT_T(KC_S),RGUI_T(KC_N), KC_SCLN,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      CW_TOGG,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,  S(KC_ENT),
+      CW_TOGG,    KC_COMM,    KC_SLSH,    KC_SCLN,    KC_W,    KC_QUOT,                         KC_Z,    KC_D, KC_J,  KC_V, KC_X,  S(KC_ENT),
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          LT(_MDA, KC_ESC),   LT(_NAV, KC_SPC),  MEH_T(KC_ENT),     LT(_NUM, KC_BSPC), OSM(MOD_LSFT), LT(_FUN, KC_DEL)
+                                          LT(_MDA, KC_ESC),   LT(_NAV, KC_SPC),  MEH_T(KC_ENT),     OSM(MOD_LSFT), LT(_NUM, KC_R), LT(_FUN, KC_DEL)
                                       //`--------------------------'  `--------------------------'
   ),
-
+/*
     [_GRA] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
        DF(_QWRT),    KC_B,    KC_L,    KC_D,    KC_W,    KC_Z,                  KC_QUOT,    KC_F,    KC_O,    KC_U,   KC_J,  KC_SCLN,
@@ -53,7 +53,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                           LT(_MDA, KC_ESC),   LT(_NAV, KC_SPC),  MEH_T(KC_ENT),     LT(_NUM, KC_BSPC), OSM(MOD_LSFT), LT(_FUN, KC_DEL)
                                       //`--------------------------'  `--------------------------'
   ),
-
+*/
     [_NAV] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
       KC_TRNS, KC_TRNS, C(KC_RIGHT), KC_END, C(KC_H), KC_TRNS,              C(KC_C), C(KC_Z), KC_TRNS, S(KC_ENT), C(KC_V), KC_TRNS,
