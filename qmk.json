@@ -3,6 +3,7 @@
     "build_targets": [
         ["crkbd", "fivedee"],
         ["splitkb/kyria/rev3", "fivedee"],
-        ["splitkb/kyria/rev2/base", "fivedee"]
+        ["splitkb/kyria/rev2/base", "fivedee"],
+        ["ferris/sweep", "fivedee"]
     ]
 }
