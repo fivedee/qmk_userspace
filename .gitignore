@@ -18,3 +18,4 @@ compile_commands.json
 
 # Secrets
 users/fivedee/leader-secret.h
+layouts/split_3x6_3/fivedee-d5/leader-secret.h
