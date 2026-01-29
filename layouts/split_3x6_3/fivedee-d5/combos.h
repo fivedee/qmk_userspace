@@ -5,7 +5,7 @@ enum combos {
   K_W_BSPC,
   C_W_Z,
   E_T_O,
-  T_T_A,
+  T_R_A,
   E_R_X,
   S_D_ENT,
   D_M_TAB,
@@ -35,8 +35,9 @@ enum combos {
   N_F_NF,
   N_P_NP,
   E_G_EG,
-  U_O_PUN,
-  I_A_NAV
+  U_O_NAV,
+  I_A_PUN
+
   
 };
 
@@ -44,7 +45,7 @@ const uint16_t PROGMEM c_k_del[] = { KC_C, KC_K, COMBO_END};
 const uint16_t PROGMEM k_w_bspc[] = { KC_K, KC_W, COMBO_END};
 const uint16_t PROGMEM c_w_z[] = { KC_C, KC_W, COMBO_END};
 const uint16_t PROGMEM e_t_o[] = { LALT_T(KC_E), LCTL_T(KC_T), COMBO_END};
-const uint16_t PROGMEM t_t_a[] = { LCTL_T(KC_T), LCTL_T(KC_T), COMBO_END};
+const uint16_t PROGMEM t_r_a[] = { LCTL_T(KC_T), LCTL_T(KC_R), COMBO_END};
 const uint16_t PROGMEM e_r_x[] = { LALT_T(KC_E), LGUI_T(KC_R), COMBO_END};
 const uint16_t PROGMEM s_d_ent[] = { KC_S, KC_D, COMBO_END};
 const uint16_t PROGMEM d_m_tab[] = { KC_D, KC_M, COMBO_END};
@@ -74,15 +75,15 @@ const uint16_t PROGMEM h_l_hl[] = { KC_H, RGUI_T(KC_L), COMBO_END};
 const uint16_t PROGMEM n_f_nf[] = { RCTL_T(KC_N), KC_F, COMBO_END};
 const uint16_t PROGMEM n_p_np[] = { RCTL_T(KC_N), KC_P, COMBO_END};
 const uint16_t PROGMEM e_g_eg[] = { RALT_T(KC_E), KC_G, COMBO_END};
-const uint16_t PROGMEM u_o_pun[] = { KC_U, RSFT_T(KC_O), COMBO_END};
-const uint16_t PROGMEM i_a_nav[] = { LT(_NUM, KC_I), LT(_SYM, KC_A), COMBO_END};
+const uint16_t PROGMEM u_o_nav[] = { LSFT_T(KC_U), RSFT_T(KC_O), COMBO_END};
+const uint16_t PROGMEM i_a_pun[] = { LT(_NUM, KC_I), LT(_SYM, KC_A), COMBO_END};
 
 combo_t key_combos[] = {
   [C_K_DEL] = COMBO(c_k_del, KC_DEL),
   [K_W_BSPC] = COMBO(k_w_bspc, KC_BSPC),
   [C_W_Z] = COMBO(c_w_z, KC_Z),
   [E_T_O] = COMBO(e_t_o, KC_O),
-  [T_T_A] = COMBO(t_t_a, KC_A),
+  [T_R_A] = COMBO(t_r_a, KC_A),
   [E_R_X] = COMBO(e_r_x, KC_X),
   [S_D_ENT] = COMBO(s_d_ent, KC_ENT),
   [D_M_TAB] = COMBO(d_m_tab, KC_TAB),
@@ -112,8 +113,8 @@ combo_t key_combos[] = {
   [N_F_NF] = COMBO_ACTION(n_f_nf),
   [N_P_NP] = COMBO_ACTION(n_p_np),
   [E_G_EG] = COMBO_ACTION(e_g_eg),
-  [U_O_PUN] = COMBO(u_o_pun, MO(_PUN)),
-  [I_A_NAV] = COMBO(i_a_nav, MO(_NAV)),
+  [U_O_NAV] = COMBO(u_o_nav, MO(_NAV)),
+  [I_A_PUN] = COMBO(i_a_pun, MO(_PUN)),
 };
 
 void process_combo_event(uint16_t combo_index, bool pressed) {
